@@ -7,6 +7,8 @@ This is a python implementation of a twitter api client which can fetch tweets b
 
 Usage
 ==
+Make sure to have python 2.7.x installed
+
 Clone the repo using
 	
 	git clone https://github.com/Deepakkoli93/mini-twitter-api-client.git
