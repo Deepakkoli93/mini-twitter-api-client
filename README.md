@@ -21,6 +21,13 @@ If the above does not work then install the requests module using
 
 Edit the _configuration.ini_ file to place your twitter app's _consumer key_ and _consumer secret_.  I have provided a sample key and secret so you can leave the _configuration.ini_ as it is.
 
+**To get tweets with hashtag #custserv and atleast one retweet run:**
+	
+	python sample.py
+
+
+General usage
+--
 Go to the repo's root directory and open a python shell. To fetch tweets, run the following commands
 	
 	from TwitterApiClient.api_client import api_client
@@ -36,12 +43,11 @@ The following example fetches tweets which have #custserv hashtag in them and ha
 	
 	api_client.display_tweets("#ipl", 100, "popular_tweets.txt")
 
- _sample.py_ contains a sample call
-
 The module contains the following basic function:
 * _fetch_bearer_token - fetches the authentication bearer token required to authenticate other api calls and saves it
 * _fetch_tweets - uses the bearer token to make a call to twitter's search api to fetch the tweets containg the required hashtag. It then filters those tweets according to the minimum number of tweets required and returns them
 * display_tweets - This is the function that the user calls. It uses _fetch_tweets to get the required tweets. Then it  displays them on the terminal and writes them to a file.
+
 
 
 
