@@ -3,16 +3,26 @@
 import base64
 import requests
 import logging
+import os
+import ConfigParser
 
 logger = logging.getLogger(__name__)
-BASE_URI = "api.twitter.com"
-CONSUMER_KEY = "NqTvP1Q6xGveBuNLPyjA2uBcU"
-CONSUMER_SECRET = "8BK8mMOFumxWQV2wWdBEQ9ZDWpVpFK7mIIvkTvmQspOo16tkFD"
+logging.basicConfig()
+
+config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "configuration.ini")
+config = ConfigParser.ConfigParser()
+config.read(config_path)
+CONSUMER_KEY = config.get("twitter api client", "CONSUMER_KEY")
+BASE_URI = config.get("twitter api client", "BASE_URI")
+CONSUMER_SECRET = config.get("twitter api client", "CONSUMER_SECRET")
+
 
 class Twitter_api(object):
 
 	def __init__(self):
-		"""This will store the bearer token required to authenticate other api calls"""
+		"""
+		This will store the bearer token required to authenticate other api calls
+		"""
 		self.bearer_token = ""
 
 	"""
@@ -36,7 +46,6 @@ class Twitter_api(object):
 			logger.error("Not able to get authentication token")
 			raise Exception("Status code for auth call {}".format(response.status_code))
 
-
 	"""
 	Fetches and prints the tweets which contain the given hashtag and have been retweeted
 	atleast once
@@ -54,16 +63,20 @@ class Twitter_api(object):
 		if response.status_code == 200:
 			tweets = response.json()["statuses"]
 			if len(tweets) <= 0:
-				return
+				return []
+
+			filtered_tweets = []
 			for tweet in tweets:
 				if not tweet.has_key("retweet_count"):
 					continue
 				if tweet["retweet_count"] > 0:
 					print(tweet["text"])
+					filtered_tweets.append(tweet)
+			return filtered_tweets
 		else:
 			raise Exception("Status code for fetch tweets call {}".format(response.status_code))
 
+
 if __name__ == "__main__":
-	logging.basicConfig()
 	api_client = Twitter_api()
 	api_client.fetch_tweets("#custerv")
