@@ -15,6 +15,10 @@ Install the dependencies
 
 	pip install -r requirements.txt
 
+If the above does not work then install the requests module using
+	
+	pip install requests
+
 Edit the _configuration.ini_ file to place your twitter app's _consumer key_ and _consumer secret_.  I have provided a sample key and secret so you can leave the _configuration.ini_ as it is.
 
 Go to the repo's root directory and open a python shell. To fetch tweets, run the following commands
