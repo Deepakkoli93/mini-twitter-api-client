@@ -34,7 +34,7 @@ _display_tweets_ can accept two optional parameters. As shown in the above examp
 It can take another parameter which is a file name (defaults to "tweets.txt"). The client will only print the text part of the tweets on the terminal and a complete dump of the tweets with all their fields will be written to "tweets.txt" (or a filename if provided). 
 The following example fetches tweets which have #custserv hashtag in them and have atleast 100 retweets. The complete details of these tweets will then be written into _popular_tweets.txt_ 
 	
-	api_client.display_tweets("#custserv", 100, "popular_tweets.txt")
+	api_client.display_tweets("#ipl", 100, "popular_tweets.txt")
 
  _sample.py_ contains a sample call
 
