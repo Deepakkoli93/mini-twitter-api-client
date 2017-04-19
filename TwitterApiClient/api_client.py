@@ -9,7 +9,7 @@ import ConfigParser
 logger = logging.getLogger(__name__)
 logging.basicConfig()
 
-config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "configuration.ini")
+config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "configuration.ini")
 config = ConfigParser.ConfigParser()
 config.read(config_path)
 CONSUMER_KEY = config.get("twitter api client", "CONSUMER_KEY")
@@ -17,7 +17,11 @@ BASE_URI = config.get("twitter api client", "BASE_URI")
 CONSUMER_SECRET = config.get("twitter api client", "CONSUMER_SECRET")
 
 
-class Twitter_api(object):
+"""
+This class defines the twitter api client and contains method to fetch tweets from 
+twitter's REST api
+"""
+class api_client(object):
 
 	def __init__(self):
 		"""
@@ -98,5 +102,5 @@ class Twitter_api(object):
 
 
 if __name__ == "__main__":
-	api_client = Twitter_api()
+	api_client = api_client()
 	api_client.display_tweets("#custerv", 1)
