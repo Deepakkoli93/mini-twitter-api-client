@@ -47,7 +47,8 @@
 		</blockquote>
 		<div class="collection">
 			{% for tweet in tweets %}
-			<a href="https://twitter.com/statuses/{{tweet[1]}}" target="_blank" class="collection-item">{{tweet[0].decode("utf-8")}}</a>
+			<a href="https://twitter.com/{{tweet[2]}}/status/{{tweet[1]}}" target="_blank" 
+			class="collection-item">{{tweet[0].decode("utf-8")}}</a>
 			{% endfor %}
 		</div>
 	{% endif %}

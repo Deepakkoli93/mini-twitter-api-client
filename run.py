@@ -33,7 +33,8 @@ def display_tweets():
 	if len(tweets) <= 0:
 		message = "No tweets found matching the criteria"
 		return render_template("display_tweets.html", message=message, tweets=tweets_text)
-	tweets_text = [(tweet["text"].encode("utf-8"), tweet["id_str"]) for tweet in tweets]
+	tweets_text = [(tweet["text"].encode("utf-8"), tweet["id_str"], tweet["user"]["screen_name"]) 
+	for tweet in tweets]
 	return render_template("display_tweets.html", message=message, tweets=tweets_text, 
 		hashtag=hashtag, min_retweets=min_retweets)
  
