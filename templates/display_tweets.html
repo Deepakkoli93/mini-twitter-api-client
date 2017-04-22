@@ -22,11 +22,11 @@
 			<form action="/" method="POST" class="col s12">
 				<div class="row">
 					<div class="col s12 l6">
-						<input placeholder="hashtag here" id="hashtag" name="hashtag" type="text" required>
+						<input value={{hashtag}} placeholder="hashtag here" id="hashtag" name="hashtag" type="text" required>
 						<label for="hashtag">Enter hashtag</label>
 					</div>
 					<div class="col s12 l4">
-						<input placeholder="min retweets here" id="min_retweets" name="min_retweets" type="number" required validate>
+						<input value={{min_retweets}} placeholder="min retweets here" id="min_retweets" name="min_retweets" type="number" required validate>
 						<label for="min_retweets">Enter minimum retweets</label>
 					</div>
 					<div class="col s12 l2 center">
@@ -38,17 +38,20 @@
 	</div>
 
 <div class="container">
-<div class="col s12 l8">
-{% if message != ""%}
-	{{message}}
-{% else %}
-	<div class="collection">
-		{% for tweet in tweets %}
-		<a href="https://twitter.com/statuses/{{tweet[1]}}" target="_blank" class="collection-item">{{tweet[0].decode("utf-8")}}</a>
-		{% endfor %}
+	<div class="col s12 l8">
+	{% if message != ""%}
+		{{message}}
+	{% else %}
+		<blockquote>
+			Tweets with hashtag {{hashtag}} and at least {{min_retweets}} retweet{% if min_retweets>1%}s{% endif %}
+		</blockquote>
+		<div class="collection">
+			{% for tweet in tweets %}
+			<a href="https://twitter.com/statuses/{{tweet[1]}}" target="_blank" class="collection-item">{{tweet[0].decode("utf-8")}}</a>
+			{% endfor %}
+		</div>
+	{% endif %}
 	</div>
-{% endif %}
-</div>
 </div>
 </body>
 </html>
