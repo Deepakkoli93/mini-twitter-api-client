@@ -1,10 +1,15 @@
+"""
+This module defined a class which can fetch tweets from twitter api
+"""
+
 #!/usr/bin/python
 
 import base64
-import requests
 import logging
 import os
 import ConfigParser
+import requests
+
 
 logger = logging.getLogger(__name__)
 logging.basicConfig()
@@ -18,7 +23,7 @@ CONSUMER_SECRET = config.get("twitter api client", "CONSUMER_SECRET")
 
 
 """
-This class defines the twitter api client and contains method to fetch tweets from 
+This class defines the twitter api client and contains method to fetch tweets from
 twitter's REST api
 """
 class api_client(object):
