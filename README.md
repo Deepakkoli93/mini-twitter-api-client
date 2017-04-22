@@ -50,6 +50,18 @@ The module contains the following basic function:
 * _fetch_tweets - uses the bearer token to make a call to twitter's search api to fetch the tweets containg the required hashtag. It then filters those tweets according to the minimum number of tweets required and returns them
 * display_tweets - This is the function that the user calls. It uses _fetch_tweets to get the required tweets. Then it  displays them on the terminal and writes them to a file.
 
+UI
+==
+The app is available at https://mini-twitter-client.herokuapp.com/
+_Flask is used to map routes to python methods and jinja is used to create templates.
+This is a one page app with a form to enter hashtag and minimum retweets required
+
+Tests
+==
+Python unittest is used to test the methods of the TwitterApiClient module. The tests can be run from the project's source directory as follows	
+	
+	python tests/run_tests.py
+
 
 
 
