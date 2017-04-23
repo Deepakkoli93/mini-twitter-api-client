@@ -53,7 +53,7 @@ The module contains the following basic function:
 UI
 ==
 The app is available at https://mini-twitter-client.herokuapp.com/
-_Flask is used to map routes to python methods and jinja is used to create templates.
+_Flask_ is used to map routes to python methods and jinja is used to create templates.
 This is a one page app with a form to enter hashtag and minimum retweets required
 To serve locally, set the variable PORT by running
 	
