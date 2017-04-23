@@ -14,7 +14,7 @@ This is the landing page. Only a form is displayed here with pre-filled input va
 def index():
 	hashtag = "#custserv"
 	min_retweets = 1
-	return render_template("display_tweets.html", hashtag = hashtag, min_retweets = min_retweets)
+	return render_template("display_tweets.html", hashtag=hashtag, min_retweets=min_retweets)
 
 
 """
@@ -32,12 +32,13 @@ def display_tweets():
 	tweets_text = []
 	if len(tweets) <= 0:
 		message = "No tweets found matching the criteria"
-		return render_template("display_tweets.html", message=message, tweets=tweets_text)
-	tweets_text = [(tweet["text"].encode("utf-8"), tweet["id_str"], tweet["user"]["screen_name"]) 
-	for tweet in tweets]
-	return render_template("display_tweets.html", message=message, tweets=tweets_text, 
+		return render_template("display_tweets.html", message=message, tweets=tweets_text,
 		hashtag=hashtag, min_retweets=min_retweets)
- 
+	tweets_text = [(tweet["text"].encode("utf-8"), tweet["id_str"], tweet["user"]["screen_name"])
+	for tweet in tweets]
+	return render_template("display_tweets.html", message=message, tweets=tweets_text,
+		hashtag=hashtag, min_retweets=min_retweets)
+
 """
 This is the driver method. It starts the flask application and starts serving requests.
 """
