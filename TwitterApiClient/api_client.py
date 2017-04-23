@@ -47,7 +47,7 @@ class api_client(object):
 		headers = {"Authorization": "Basic " + base64.b64encode(bytes(CONSUMER_KEY+":"+CONSUMER_SECRET))}
 		headers["Content-Type"] = "application/x-www-form-urlencoded"
 		url = "https://" + BASE_URI + resource_path
-		response = requests.post(url, headers = headers, data = {"grant_type": "client_credentials"})
+		response = requests.post(url, headers=headers, data={"grant_type": "client_credentials"})
 		logger.debug("Response status code of the auth request : " + str(response.status_code))
 		if response.status_code == 200:
 			logger.debug("Bearer access token: " + response.json()["access_token"])
@@ -69,7 +69,7 @@ class api_client(object):
 		url = "https://" + BASE_URI + resource_path
 		headers = {"Authorization": self.bearer_token}
 		payload = {"q" : hashtag, "count" : 100}
-		response = requests.get(url, headers = headers, params=payload)
+		response = requests.get(url, headers=headers, params=payload)
 		logger.debug("Response status of the fetch tweets request : " + str(response.status_code))
 		if response.status_code == 200:
 			tweets = response.json()["statuses"]
